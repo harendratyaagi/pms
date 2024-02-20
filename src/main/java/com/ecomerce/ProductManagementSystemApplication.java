@@ -10,6 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 public class ProductManagementSystemApplication {
 
 	public static void main(String[] args) {
+		System.out.println("Initializing");
 		SpringApplication.run(ProductManagementSystemApplication.class, args);
 	}
 
