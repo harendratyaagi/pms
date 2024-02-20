@@ -48,7 +48,8 @@ public class User implements UserDetails, Serializable {
                     name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"))
-    @JsonIgnore
+    //@JsonIgnore
+    @JsonManagedReference
     private Collection<Role> roles;
 
 //    @Override

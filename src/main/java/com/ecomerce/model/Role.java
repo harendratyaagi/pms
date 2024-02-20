@@ -23,6 +23,7 @@ public class Role implements Serializable {
 
     private String name;
     @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
+    @JsonBackReference
     private Collection<User> users;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -32,6 +33,7 @@ public class Role implements Serializable {
                     name = "role_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "privilege_id", referencedColumnName = "id"))
+    @JsonManagedReference
     private Collection<Privilege> privileges;
 
     public Role(String name) {

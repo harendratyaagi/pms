@@ -1,5 +1,6 @@
 package com.ecomerce.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,6 +23,7 @@ public class Privilege implements Serializable {
     private String name;
 
     @ManyToMany(mappedBy = "privileges", fetch = FetchType.EAGER)
+    @JsonBackReference
     private Collection<Role> roles;
 
     public Privilege(String name) {
