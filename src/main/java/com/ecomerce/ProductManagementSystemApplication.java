@@ -64,9 +64,9 @@ public class ProductManagementSystemApplication {
         invoicePdfTextGeneratorUtil.addSingleLineText("Time :"+time, (int) (pageWidth - 25 - timeTextWidth), pageHeight - 298, font, 16, Color.BLACK);
 
         InvoicePdfTableGeneratorUtil invoicePdfTableGeneratorUtil = new InvoicePdfTableGeneratorUtil(document, contentStream);
-        int[] cellWidth = new int[]{80, 200, 80, 100,100};
+        int[] cellWidth = new int[]{50, 280, 90, 60,60};
         invoicePdfTableGeneratorUtil.setTable(cellWidth, 23, 15, pageHeight - 350);
-        invoicePdfTableGeneratorUtil.setTableFont(font, 10, Color.BLACK);
+        invoicePdfTableGeneratorUtil.setTableFont(font, 8, Color.BLACK);
         invoicePdfTableGeneratorUtil.addCell("SL No",Color.WHITE);
         invoicePdfTableGeneratorUtil.addCell("Product Details",Color.WHITE);
         invoicePdfTableGeneratorUtil.addCell("HSN Code",Color.WHITE);
@@ -75,11 +75,14 @@ public class ProductManagementSystemApplication {
 
 
         invoicePdfTableGeneratorUtil.addCell("1",Color.WHITE);
-        invoicePdfTableGeneratorUtil.addCell("Glass - CRHC- CRHC",Color.WHITE);
+        invoicePdfTableGeneratorUtil.addCell("Glass - CRHC- CRHC kkk k kdjgk kjkgdgjk jkdnkjg",Color.WHITE);
         invoicePdfTableGeneratorUtil.addCell("9001",Color.WHITE);
         invoicePdfTableGeneratorUtil.addCell("12",Color.WHITE);
         invoicePdfTableGeneratorUtil.addCell("130.00",Color.WHITE);
 
+        String text = "This is computer generated invoice.";
+        float textWidth = invoicePdfTextGeneratorUtil.getTextWidth(text, font, 16);
+        invoicePdfTextGeneratorUtil.addSingleLineText(text, 25, (int)(pageHeight - 450-textWidth), font, 16, Color.BLACK);
 
         contentStream.close();
         HashMap<Integer, String> overlayGuide = new HashMap<Integer, String>();

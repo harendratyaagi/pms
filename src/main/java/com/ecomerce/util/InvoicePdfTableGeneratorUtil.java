@@ -1,7 +1,9 @@
 package com.ecomerce.util;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 
 import java.awt.*;
@@ -71,7 +73,8 @@ public class InvoicePdfTableGeneratorUtil {
 //            float fontWidth = font.getStringWidth(text) / 1000 * fontSize;
 //            contentStream.newLineAtOffset(xPosition + colWidth[colPosition] - 20 - fontWidth, yPosition + 10);
 //        } else {
-        contentStream.newLineAtOffset(xPosition + 20, yPosition + 10);
+        contentStream.setFont(font, fontSize);
+        contentStream.newLineAtOffset(xPosition + 5, yPosition + 10);
 //        }
         contentStream.showText(text);
         contentStream.endText();
@@ -80,8 +83,7 @@ public class InvoicePdfTableGeneratorUtil {
         if (colPosition == colWidth.length) {
             colPosition = 0;
             xPosition = xInitialPosition;
-            yPosition = 510+cellHeight;
-
+            yPosition = yPosition-cellHeight;
         }
     }
 }
