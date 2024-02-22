@@ -86,4 +86,92 @@ public class InvoicePdfTableGeneratorUtil {
             yPosition = yPosition-cellHeight;
         }
     }
+
+    public PDDocument getDocument() {
+        return document;
+    }
+
+    public void setDocument(PDDocument document) {
+        this.document = document;
+    }
+
+    public PDPageContentStream getContentStream() {
+        return contentStream;
+    }
+
+    public void setContentStream(PDPageContentStream contentStream) {
+        this.contentStream = contentStream;
+    }
+
+    public int[] getColWidth() {
+        return colWidth;
+    }
+
+    public void setColWidth(int[] colWidth) {
+        this.colWidth = colWidth;
+    }
+
+    public int getCellHeight() {
+        return cellHeight;
+    }
+
+    public void setCellHeight(int cellHeight) {
+        this.cellHeight = cellHeight;
+    }
+
+    public int getxPosition() {
+        return xPosition;
+    }
+
+    public void setxPosition(int xPosition) {
+        this.xPosition = xPosition;
+    }
+
+    public int getyPosition() {
+        return yPosition;
+    }
+
+    public void setyPosition(int yPosition) {
+        this.yPosition = yPosition;
+    }
+
+    public int getColPosition() {
+        return colPosition;
+    }
+
+    public void setColPosition(int colPosition) {
+        this.colPosition = colPosition;
+    }
+
+    public int getxInitialPosition() {
+        return xInitialPosition;
+    }
+
+    public void setxInitialPosition(int xInitialPosition) {
+        this.xInitialPosition = xInitialPosition;
+    }
+
+    public float getFontSize() {
+        return fontSize;
+    }
+
+    public void setFontSize(float fontSize) {
+        this.fontSize = fontSize;
+    }
+
+    public PDFont getFont() {
+        return font;
+    }
+
+    public void setFont(PDFont font) {
+        this.font = font;
+    }
+
+    public Color getFontColor() {
+        return fontColor;
+    }
+
+    public void setFontColor(Color fontColor) {
+        this.fontColor = fontColor;
+    }
 }

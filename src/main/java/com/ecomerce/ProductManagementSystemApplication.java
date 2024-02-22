@@ -60,38 +60,47 @@ public class ProductManagementSystemApplication {
         invoicePdfTextGeneratorUtil.addSingleLineText(d_format.format(new Date()), (int) (pageWidth - 25 - dateTextWidth), pageHeight - 274, font, 16, Color.BLACK);
 
         String time = t_format.format(new Date());
-        float timeTextWidth = invoicePdfTextGeneratorUtil.getTextWidth( "Time :"+time, font, 16);
-        invoicePdfTextGeneratorUtil.addSingleLineText("Time :"+time, (int) (pageWidth - 25 - timeTextWidth), pageHeight - 298, font, 16, Color.BLACK);
+        float timeTextWidth = invoicePdfTextGeneratorUtil.getTextWidth("Time :" + time, font, 16);
+        invoicePdfTextGeneratorUtil.addSingleLineText("Time :" + time, (int) (pageWidth - 25 - timeTextWidth), pageHeight - 298, font, 16, Color.BLACK);
 
         InvoicePdfTableGeneratorUtil invoicePdfTableGeneratorUtil = new InvoicePdfTableGeneratorUtil(document, contentStream);
-        int[] cellWidth = new int[]{50, 280, 90, 60,60};
+        int[] cellWidth = new int[]{50, 280, 90, 60, 60};
         invoicePdfTableGeneratorUtil.setTable(cellWidth, 23, 15, pageHeight - 350);
         invoicePdfTableGeneratorUtil.setTableFont(font, 8, Color.BLACK);
-        invoicePdfTableGeneratorUtil.addCell("SL No",Color.WHITE);
-        invoicePdfTableGeneratorUtil.addCell("Product Details",Color.WHITE);
-        invoicePdfTableGeneratorUtil.addCell("HSN Code",Color.WHITE);
-        invoicePdfTableGeneratorUtil.addCell("GST %",Color.WHITE);
-        invoicePdfTableGeneratorUtil.addCell("PRICE",Color.WHITE);
+        invoicePdfTableGeneratorUtil.addCell("SL No", Color.WHITE);
+        invoicePdfTableGeneratorUtil.addCell("Product Details", Color.WHITE);
+        invoicePdfTableGeneratorUtil.addCell("HSN Code", Color.WHITE);
+        invoicePdfTableGeneratorUtil.addCell("GST %", Color.WHITE);
+        invoicePdfTableGeneratorUtil.addCell("PRICE", Color.WHITE);
 
-
-        invoicePdfTableGeneratorUtil.addCell("1",Color.WHITE);
-        invoicePdfTableGeneratorUtil.addCell("Glass - CRHC- CRHC kkk k kdjgk kjkgdgjk jkdnkjg",Color.WHITE);
-        invoicePdfTableGeneratorUtil.addCell("9001",Color.WHITE);
-        invoicePdfTableGeneratorUtil.addCell("12",Color.WHITE);
-        invoicePdfTableGeneratorUtil.addCell("130.00",Color.WHITE);
+        for (int i = 1; i <= 49; i++) {
+            if(invoicePdfTableGeneratorUtil.getyPosition() <=20){
+                contentStream.close();
+                PDPage page2 = new PDPage();
+                document.addPage(page2);
+                contentStream = new PDPageContentStream(document, page2);
+                invoicePdfTableGeneratorUtil.setContentStream(contentStream);
+                invoicePdfTableGeneratorUtil.setTable(cellWidth, 23, 15, pageHeight - 150);
+            }
+            invoicePdfTableGeneratorUtil.addCell("" + i, Color.WHITE);
+            invoicePdfTableGeneratorUtil.addCell("Glass - CRHC- CRHC kkk k kdjgk kjkgdgjk jkdnkjg", Color.WHITE);
+            invoicePdfTableGeneratorUtil.addCell("9001", Color.WHITE);
+            invoicePdfTableGeneratorUtil.addCell("12", Color.WHITE);
+            invoicePdfTableGeneratorUtil.addCell("130.00", Color.WHITE);
+        }
 
         String text = "This is computer generated invoice.";
         float textWidth = invoicePdfTextGeneratorUtil.getTextWidth(text, font, 16);
-        invoicePdfTextGeneratorUtil.addSingleLineText(text, 25, (int)(pageHeight - 450-textWidth), font, 16, Color.BLACK);
+        invoicePdfTextGeneratorUtil.addSingleLineText(text, 25, (int) (pageHeight - 450 - textWidth), font, 16, Color.BLACK);
 
         contentStream.close();
         HashMap<Integer, String> overlayGuide = new HashMap<Integer, String>();
-        overlayGuide.put(1,"/home/kavita/Downloads/watermarkimage.pdf");
+        overlayGuide.put(1, "/home/kavita/Downloads/watermarkimage.pdf");
         Overlay overlay = new Overlay();
         overlay.setInputPDF(document);
         overlay.setOverlayPosition(Overlay.Position.BACKGROUND);
         overlay.overlay(overlayGuide).save("/home/kavita/result.pdf");
-       // document.save("/home/kavita/result.pdf");
+        // document.save("/home/kavita/result.pdf");
         document.close();
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>end");
         SpringApplication.run(ProductManagementSystemApplication.class, args);
