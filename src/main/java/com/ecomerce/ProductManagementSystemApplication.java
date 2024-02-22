@@ -76,17 +76,17 @@ public class ProductManagementSystemApplication {
         for (int i = 1; i <= 49; i++) {
             if(invoicePdfTableGeneratorUtil.getyPosition() <=20){
                 contentStream.close();
-                PDPage page2 = new PDPage();
+                PDPage page2 = new PDPage(PDRectangle.A4);
                 document.addPage(page2);
                 contentStream = new PDPageContentStream(document, page2);
                 invoicePdfTableGeneratorUtil.setContentStream(contentStream);
                 invoicePdfTableGeneratorUtil.setTable(cellWidth, 23, 15, pageHeight - 150);
             }
-            invoicePdfTableGeneratorUtil.addCell("" + i, Color.WHITE);
-            invoicePdfTableGeneratorUtil.addCell("Glass - CRHC- CRHC kkk k kdjgk kjkgdgjk jkdnkjg", Color.WHITE);
-            invoicePdfTableGeneratorUtil.addCell("9001", Color.WHITE);
-            invoicePdfTableGeneratorUtil.addCell("12", Color.WHITE);
-            invoicePdfTableGeneratorUtil.addCell("130.00", Color.WHITE);
+            invoicePdfTableGeneratorUtil.addCell("" + i, null);
+            invoicePdfTableGeneratorUtil.addCell("Glass - CRHC- CRHC kkk k kdjgk kjkgdgjk jkdnkjg", null);
+            invoicePdfTableGeneratorUtil.addCell("9001", null);
+            invoicePdfTableGeneratorUtil.addCell("12", null);
+            invoicePdfTableGeneratorUtil.addCell("130.00", null);
         }
 
         String text = "This is computer generated invoice.";
