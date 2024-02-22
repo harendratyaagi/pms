@@ -37,7 +37,7 @@ public class PMSSecurityConfig {
         http.csrf((AbstractHttpConfigurer::disable))
                 .authorizeHttpRequests((authz) ->
                         authz.
-                                requestMatchers("/users/create", "/users/welcome",
+                                requestMatchers("/users/create", "/users/invoice/download/**",
                                         "/swagger-ui/index.html/**", "/v3/api-docs/**")
                                 .permitAll()
                                 .requestMatchers("/users/**").authenticated())
